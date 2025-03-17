@@ -28,7 +28,7 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
         {
             int v = edge.dst;
             int weight = edge.weight;
-            if (distances[u] != INF && !visited[v] && distances[u] + weight < distances[v])
+            if (!visited[v] && distances[u] != INF && distances[u] + weight < distances[v])
             {
                 distances[v] = distances[u] + weight;
                 previous[v] = u;
@@ -53,7 +53,7 @@ void print_path(const vector<int>& path, int total_cost)
     for (size_t i = 0; i < path.size(); i++)
     {
         cout << path[i];
-        if (i < path.size() - 1) cout << " ";
+        if (i < path.size()) cout << " ";
     }
-    cout << " \nTotal cost is " << total_cost << "\n";
+    cout << "\nTotal cost is " << total_cost << "\n";
 }
